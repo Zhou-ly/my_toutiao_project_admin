@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import request from '@/utils/request'
+import { login } from '@/api/user'
 
 export default {
   name: 'LoginIndex',
@@ -98,12 +98,7 @@ export default {
 
     login () {
       this.loginLoading = true
-      request({
-        method: 'POST',
-        url: '/mp/v1_0/authorizations',
-        // data 用来设置 POST 请求体
-        data: this.data
-      }).then(res => {
+      login(this.user).then(res => {
         console.log(res)
         // 登录成功
         this.$message({
