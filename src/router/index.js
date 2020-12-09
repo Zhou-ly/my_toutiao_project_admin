@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Login from '@/views/login'
 import Layout from '@/views/layout'
 import Home from '@/views/home'
+import NProgress from 'nprogress'
 
 Vue.use(VueRouter)
 
@@ -45,7 +46,8 @@ router.beforeEach((to, from, next) => {
   // 如果登录了，则允许通过
   // 允许通过
   // next()
-  console.log(to.path)
+  // console.log(to.path)
+  NProgress.start()
   const user = JSON.parse(window.localStorage.getItem('user'))
 
   // 校验非登录页面的登录状态
@@ -61,4 +63,9 @@ router.beforeEach((to, from, next) => {
     // 登录页面，正常允许通过
     next()
   }
+})
+
+router.afterEach((to, from) => {
+  // 结束顶部的导航进度条
+  NProgress.done()
 })
