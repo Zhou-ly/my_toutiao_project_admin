@@ -4,6 +4,7 @@ import Login from '@/views/login'
 import Layout from '@/views/layout'
 import Home from '@/views/home'
 import NProgress from 'nprogress'
+import Article from '@/views/article'
 
 Vue.use(VueRouter)
 
@@ -25,6 +26,11 @@ const routes = [
         component: Home
       }
     ]
+  },
+  {
+    path: '/article',
+    name: 'article',
+    component: Article
   }
 
 ]
